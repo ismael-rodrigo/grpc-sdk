@@ -1,0 +1,9 @@
+{
+    "name": "grpc-teste", 
+    "version": "1", 
+
+    "dependencies": [  
+      "fmt",
+      "grpc"
+    ]
+  }  
