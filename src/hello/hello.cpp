@@ -1,7 +1,8 @@
 #include "hello/hello.h"
+#include "hello/hello.grpc.pb.h"
+#include <grpcpp/grpcpp.h>
 
-grpc::Status SayHello(grpc::ServerContext*, const HelloRequest* request, HelloResponse* reply){
-		std::cout << "got a request!\n";
-		reply->set_message(request->name());
-		return grpc::Status::OK;
-};
+
+bool getAge(){
+	return true;
+}

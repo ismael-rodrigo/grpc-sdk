@@ -16,36 +16,40 @@ find_package(gRPC CONFIG REQUIRED)
 
 
 add_subdirectory(proto)
+add_subdirectory(external/serial)
+
+add_library(
+    ${PROJECT_NAME}SRC
+    src/hello/hello.cpp
+)
 
 
-#add_library(
-#   ${PROJECT_NAME}SRC
-#   example/example.cpp
-#)
+
 
 add_executable(
     ${PROJECT_NAME}
-
     src/main.cpp
 )    
 
 target_include_directories(
-    ${PROJECT_NAME}
+    ${PROJECT_NAME}SRC
 
     PUBLIC
         ./include
-        ${CMAKE_CURRENT_BINARY_DIR}/protos
+        ./external/serial/src
+        ${CMAKE_CURRENT_BINARY_DIR}/protos/
         
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE gRPC::gpr gRPC::grpc gRPC::grpc++ gRPC::grpc++_alts gRPC::grpc++_reflection )
-target_link_libraries(${PROJECT_NAME} PRIVATE sdk_protobuf)
+target_link_libraries(${PROJECT_NAME}SRC PUBLIC gRPC::gpr gRPC::grpc gRPC::grpc++ gRPC::grpc++_alts gRPC::grpc++_reflection )
+target_link_libraries(${PROJECT_NAME}SRC PUBLIC sdk_protobuf)
+target_link_libraries(${PROJECT_NAME}SRC PUBLIC serial)
 
-#target_link_libraries(
-#   ${PROJECT_NAME}
+target_link_libraries(
+   ${PROJECT_NAME}
 
-#    PUBLIC
-#        ${PROJECT_NAME}SRC
-#)
+    PUBLIC
+        ${PROJECT_NAME}SRC
+)
 
 
