@@ -6,14 +6,7 @@
 
 
 
-using grpc::ServerContext;
-using grpc::Status;
-
-
 class HelloServiceImpl final : public HelloService::Service
 {
-	Status SayHello(ServerContext*, const HelloRequest* request, HelloResponse* reply) override ;
+	grpc::Status SayHello(grpc::ServerContext*, const HelloRequest* request, HelloResponse* reply) override ;
 };
-
-
-

@@ -1,0 +1,4 @@
+
+[submodule "external/simple-serial"]
+	path = external/simple-serial
+	url = https://github.com/ismael-rodrigo/simple-serial.git

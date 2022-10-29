@@ -36,7 +36,7 @@ target_include_directories(
 
     PUBLIC
         ./include
-        ./external/serial/src
+        ./external/simple-serial/src
         ${CMAKE_CURRENT_BINARY_DIR}/protos/
         
 )
