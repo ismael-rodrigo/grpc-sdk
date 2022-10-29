@@ -2,8 +2,8 @@
 
 
 ## Configure Project
-`cmake -S . -B out/build/ -G "Visual Studio 16 2019"`
+`./manager -c`
 
 ## Build Project
-`cmake --build out/build`
+`./manager -b`
 
