@@ -16,7 +16,7 @@ find_package(gRPC CONFIG REQUIRED)
 
 
 add_subdirectory(proto)
-add_subdirectory(external/serial)
+add_subdirectory(external/simple-serial)
 
 add_library(
     ${PROJECT_NAME}SRC
