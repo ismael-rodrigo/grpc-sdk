@@ -7,6 +7,8 @@
 #include "hello/hello.h"
 #include "SerialPort.h"
 
+#include "protocol/istxrx.h"
+
 
 grpc::Status HelloServiceImpl::SayHello(grpc::ServerContext*, const HelloRequest* request, HelloResponse* reply) 
 {
@@ -14,7 +16,20 @@ grpc::Status HelloServiceImpl::SayHello(grpc::ServerContext*, const HelloRequest
 
 	const char *port = request->name().c_str();
 	SerialPort serial(port , 9600);
-	serial.writeSerialPort("HELLO SERIAL \n", 13);
+
+	Istxrx protocol_manager;
+
+	SetStateDeviceArgs arg;
+
+	arg.io_address = 86 ;
+	arg.new_state = 78;
+
+	protocol_manager.setStateDeviceComand(arg);
+
+	char* command = protocol_manager.getCommandSerialized();
+
+
+	serial.writeSerialPort(command, 8);
 	const std::string message = ("Menssagem enviada para %s" ,request->name());
 	reply->set_message(message);
 	return grpc::Status::OK;

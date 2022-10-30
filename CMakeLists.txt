@@ -43,6 +43,14 @@ add_subdirectory(external/simple-serial)
 add_library(
     ${PROJECT_NAME}SRC
     src/hello/hello.cpp
+
+    src/protocol/istxrx.cpp
+    src/protocol/commands/setStateDevice.cpp
+
+    src/serializer/serializer.cpp
+
+
+
 )
 
 
