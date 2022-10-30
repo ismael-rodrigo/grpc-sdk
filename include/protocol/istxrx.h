@@ -1,13 +1,13 @@
 #include "protocol/commands/DefaultCommand.h"
-#include "protocol/commands/setStateDevice.h"
+#include "hello/hello.grpc.pb.h"
+
 #pragma once
 
 class Istxrx 
 {
 public:
     Istxrx();
-    void setStateDeviceComand(SetStateDeviceArgs args);
-
+    void setStateDeviceComand(SetStateArgs args);
     char* getCommandSerialized();
 
 private:

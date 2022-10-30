@@ -12,26 +12,13 @@
 
 grpc::Status HelloServiceImpl::SayHello(grpc::ServerContext*, const HelloRequest* request, HelloResponse* reply) 
 {
-    std::cout << "got a request!\n";
-
-	const char *port = request->name().c_str();
-	SerialPort serial(port , 9600);
-
+	SerialPort serial(request->info().port_name().c_str() , request->info().baud_rate());
 	Istxrx protocol_manager;
-
-	SetStateDeviceArgs arg;
-
-	arg.io_address = 86 ;
-	arg.new_state = 78;
-
-	protocol_manager.setStateDeviceComand(arg);
-
+	protocol_manager.setStateDeviceComand(request->set_state_args());
 	char* command = protocol_manager.getCommandSerialized();
-
-
 	serial.writeSerialPort(command, 8);
-	const std::string message = ("Menssagem enviada para %s" ,request->name());
-	reply->set_message(message);
+	const std::string message = ("Menssagem enviada");
+	reply->set_message("ok");
 	return grpc::Status::OK;
 }
 

@@ -7,6 +7,8 @@ add_library(
     sdk_protobuf 
     hello/hello.proto
 
+    protocol/protocol_messages.proto
+
 
 )
 message(STATUS "GERATING FILES WITH PROTO")
