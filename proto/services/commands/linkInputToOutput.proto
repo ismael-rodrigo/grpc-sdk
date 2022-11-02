@@ -14,5 +14,5 @@ message linkInputToOutputArgs {
 }
 
 message LinkInputToOutputResponse {
-    string message = 1;
+    bytes message = 1;
 } 

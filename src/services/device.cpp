@@ -8,6 +8,7 @@
 #include "SerialPort.h"
 
 #include "protocol/istxrx.h"
+#include "serializer/serializer.h"
 
 
 grpc::Status DeviceServiceImpl::SetStateOutput(grpc::ServerContext*, const SetStateOutputRequest* request, SetStateOutputResponse* reply) 
@@ -20,8 +21,16 @@ grpc::Status DeviceServiceImpl::SetStateOutput(grpc::ServerContext*, const SetSt
 
 	serial.writeSerialPort(command, 8);
 
-	reply->set_message("ok");
+	char response_firmware[8];
+
+	if(serial.awaitReadSerialPort(request->info().time_out() ,response_firmware , 8)){
+
+		reply->set_message(response_firmware);
+		return grpc::Status::OK;
+	}
+	reply->set_message("TIME_OUT_EXCEPTION");
 	return grpc::Status::OK;
+
 }
 
 

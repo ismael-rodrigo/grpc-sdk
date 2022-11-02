@@ -10,7 +10,7 @@ message SetStateOutputRequest {
 }
   
 message SetStateOutputResponse {
-    string message = 1;
+    bytes message = 1;
 }
   
 message SetStateArgs {

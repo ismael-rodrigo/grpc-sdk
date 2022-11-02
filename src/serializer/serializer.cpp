@@ -16,3 +16,12 @@ char* serializer_command_to_char(Command command)
     return command_serialized;
 
     }
+
+char* limited_char(char* char_array , int size)
+{
+    char* char_serialized = new char[size];
+    for(unsigned int i = 0 ; i < size ; i++){
+        char_serialized[i] = char_array[i]; 
+    }
+    return char_serialized;
+}

@@ -11,6 +11,7 @@ public:
     void setStateDeviceComand(SetStateArgs args);
     void linkInputToOutput(linkInputToOutputArgs args);
     char* getCommandSerialized();
+    
 
 private:
     Command _command;
