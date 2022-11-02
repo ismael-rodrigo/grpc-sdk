@@ -5,6 +5,8 @@ find_package(Threads)
 
 add_library(
     sdk_protobuf 
+    services/commands/setStateOutput.proto
+    services/commands/linkInputToOutput.proto
     services/device.proto
 
     protocol/protocol_messages.proto

@@ -7,4 +7,5 @@
 class DeviceServiceImpl final : public DeviceService::Service
 {
 	grpc::Status SetStateOutput(grpc::ServerContext*, const SetStateOutputRequest* request, SetStateOutputResponse* reply) override ;
+	grpc::Status LinkInputToOutput(grpc::ServerContext* ,const LinkInputToOutputRequest* request , LinkInputToOutputResponse* reply ) override ;
 };

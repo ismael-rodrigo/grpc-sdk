@@ -46,6 +46,7 @@ add_library(
 
     src/protocol/istxrx.cpp
     src/protocol/commands/setStateDevice.cpp
+    src/protocol/commands/linkInputToOutput.cpp
 
     src/serializer/serializer.cpp
 

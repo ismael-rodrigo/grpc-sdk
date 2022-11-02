@@ -9,6 +9,7 @@ class Istxrx
 public:
     Istxrx();
     void setStateDeviceComand(SetStateArgs args);
+    void linkInputToOutput(linkInputToOutputArgs args);
     char* getCommandSerialized();
 
 private:

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "protocol/protocol_messages.proto";
+
+message LinkInputToOutputRequest {
+    InfosHeader info = 1 ;
+    linkInputToOutputArgs link_input_to_output = 2;
+}
+
+message linkInputToOutputArgs {
+    int32 input_address = 1;
+    int32 output_address = 2;
+    int32 input_active_mode = 3;
+}
+
+message LinkInputToOutputResponse {
+    string message = 1;
+} 

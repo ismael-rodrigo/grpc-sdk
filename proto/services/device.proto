@@ -1,23 +1,13 @@
 syntax = "proto3";
 
-import "protocol/protocol_messages.proto";
+
+import "services/commands/setStateOutput.proto";
+import "services/commands/linkInputToOutput.proto";
 
 
 
 service DeviceService {
   rpc SetStateOutput (SetStateOutputRequest) returns (SetStateOutputResponse);
+  rpc LinkInputToOutput (LinkInputToOutputRequest) returns (LinkInputToOutputResponse);
 }
 
-message SetStateOutputRequest {
-  InfosHeader info = 1 ;
-  SetStateArgs set_state_args = 2;
-}
-
-message SetStateOutputResponse {
-  string message = 1;
-}
-
-message SetStateArgs {
-  int32 io_address = 1;
-  int32 new_state = 2; 
-}

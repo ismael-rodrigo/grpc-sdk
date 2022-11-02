@@ -24,3 +24,19 @@ grpc::Status DeviceServiceImpl::SetStateOutput(grpc::ServerContext*, const SetSt
 	return grpc::Status::OK;
 }
 
+
+
+
+grpc::Status DeviceServiceImpl::LinkInputToOutput(grpc::ServerContext* ,const LinkInputToOutputRequest* request , LinkInputToOutputResponse* reply)
+{
+	SerialPort serial(request->info().port_name().c_str() , request->info().baud_rate());
+
+	Istxrx protocol_manager;
+	protocol_manager.linkInputToOutput(request->link_input_to_output());
+	
+
+	char* command = protocol_manager.getCommandSerialized();
+	serial.writeSerialPort(command, 8);
+	reply->set_message("ok");
+	return grpc::Status::OK;
+}
