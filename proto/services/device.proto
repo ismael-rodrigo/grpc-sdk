@@ -4,19 +4,18 @@ import "protocol/protocol_messages.proto";
 
 
 
-service HelloService {
-  rpc SayHello (HelloRequest) returns (HelloResponse);
+service DeviceService {
+  rpc SetStateOutput (SetStateOutputRequest) returns (SetStateOutputResponse);
 }
 
-message HelloRequest {
+message SetStateOutputRequest {
   InfosHeader info = 1 ;
   SetStateArgs set_state_args = 2;
 }
 
-message HelloResponse {
+message SetStateOutputResponse {
   string message = 1;
 }
-
 
 message SetStateArgs {
   int32 io_address = 1;

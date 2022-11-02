@@ -1,5 +1,6 @@
 #include "protocol/commands/DefaultCommand.h"
-#include "hello/hello.grpc.pb.h"
+
+#include "services/device.grpc.pb.h"
 
 #pragma once
 

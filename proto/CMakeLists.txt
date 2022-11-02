@@ -5,7 +5,7 @@ find_package(Threads)
 
 add_library(
     sdk_protobuf 
-    hello/hello.proto
+    services/device.proto
 
     protocol/protocol_messages.proto
 
